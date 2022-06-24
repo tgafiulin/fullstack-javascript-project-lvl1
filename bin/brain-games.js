@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-console.log(123);
+import greeting from '../src/cli.js';
+
+greeting();
