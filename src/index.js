@@ -3,6 +3,7 @@ import calc from './games/calc.js';
 import even from './games/even.js';
 import gcd from './games/gcd.js';
 import progression from './games/progression.js';
+import prime from './games/prime.js';
 
 const startGame = (gameName) => {
   console.log('Welcome to the Brain Games!');
@@ -28,6 +29,10 @@ const startGame = (gameName) => {
     case 'progression':
       gameResult = progression;
       rule = 'What number is missing in the progression?';
+      break;
+    case 'prime':
+      gameResult = prime;
+      rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
       break;
     default:
       gameResult = even;
