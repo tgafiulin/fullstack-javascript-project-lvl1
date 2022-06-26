@@ -2,6 +2,7 @@ import readlineSync from 'readline-sync';
 import calc from './games/calc.js';
 import even from './games/even.js';
 import gcd from './games/gcd.js';
+import progression from './games/progression.js';
 
 const startGame = (gameName) => {
   console.log('Welcome to the Brain Games!');
@@ -23,6 +24,10 @@ const startGame = (gameName) => {
     case 'gcd':
       gameResult = gcd;
       rule = 'Find the greatest common divisor of given numbers.';
+      break;
+    case 'progression':
+      gameResult = progression;
+      rule = 'What number is missing in the progression?';
       break;
     default:
       gameResult = even;
