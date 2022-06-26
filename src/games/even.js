@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import { buildAnswerForMistake } from '../utils/utils.js';
 
 const isAnswerCorrect = (number, answer) => {
   if ((answer === 'yes' && number % 2 === 0) || (answer === 'no' && number % 2 !== 0)) {
@@ -8,18 +9,7 @@ const isAnswerCorrect = (number, answer) => {
   return false;
 };
 
-const buildAnswerForMistake = (answer) => {
-  if (answer === 'yes') {
-    return "'yes' is wrong answer ;(. Correct answer was 'no'.";
-  }
-
-  return "'no' is wrong answer ;(. Correct answer was 'yes'.";
-};
-
 const even = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   const stepForWin = 3;
   let i = 0;
@@ -31,15 +21,14 @@ const even = () => {
     if (isAnswerCorrect(randomNumber, answer)) {
       console.log('Correct!');
     } else {
-      buildAnswerForMistake(answer);
-      console.log(`Let's try again, ${name}!`);
-      return;
+      buildAnswerForMistake(answer, answer === 'yes' ? 'no' : 'yes');
+      return false;
     }
 
     i += 1;
   }
 
-  console.log(`Congratulations, ${name}!`);
+  return true;
 };
 
 export default even;
