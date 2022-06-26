@@ -6,7 +6,7 @@ const even = () => {
   const realAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
   console.log(`Question: ${randomNumber}`);
   const userAnswer = readlineSync.question('Your answer: ');
-  if (realAnswer === answer) {
+  if (realAnswer === userAnswer) {
     console.log('Correct!');
   } else {
     buildAnswerForMistake(realAnswer, userAnswer);
