@@ -1,7 +1,6 @@
-import readlineSync from 'readline-sync';
-import { buildAnswerForMistake, getRandom2DigitNumber } from '../utils/utils.js';
+import { checkAnswer, getRandom2DigitNumber } from '../utils/utils.js';
 
-const getAnswer = (firstNumber, operation, secondNumber) => {
+const calculation = (firstNumber, operation, secondNumber) => {
   switch (operation) {
     case '+':
       return firstNumber + secondNumber;
@@ -22,16 +21,9 @@ const calc = () => {
   const randomOperation = operations[Math.floor(Math.random() * operations.length)];
 
   console.log(`Question: ${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`);
-  const realAnswer = getAnswer(randomFirstNumber, randomOperation, randomSecondNumber);
-  const userAnswer = Number(readlineSync.question('Your answer: '));
-  if (realAnswer === userAnswer) {
-    console.log('Correct!');
-  } else {
-    buildAnswerForMistake(realAnswer, userAnswer);
-    return false;
-  }
+  const realAnswer = calculation(randomFirstNumber, randomOperation, randomSecondNumber);
 
-  return true;
+  return checkAnswer(realAnswer);
 };
 
 export default calc;
