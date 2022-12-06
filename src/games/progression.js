@@ -3,7 +3,7 @@ import {
 } from '../utils/utils.js';
 import startGame from '../index.js';
 
-const generateProgression = (firstNumberProgression, stepProgression, indexAnswer) => {
+const generateProgression = ({ firstNumberProgression, stepProgression, indexAnswer }) => {
   const row = [];
   let realAnswer;
 
@@ -25,7 +25,9 @@ const progression = () => {
   const stepProgression = Math.ceil(Math.random() * 4);
   const indexAnswer = Math.floor(Math.random() * 10);
 
-  const { row, realAnswer } = generateProgression(firstNumberProgression, stepProgression, indexAnswer);
+  const paramsForProgression = { firstNumberProgression, stepProgression, indexAnswer };
+
+  const { row, realAnswer } = generateProgression(paramsForProgression);
 
   showGameQuestionForUser(`${row.join(' ')}`);
   const userAnswer = getUserAnswer();
