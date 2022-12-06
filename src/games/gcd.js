@@ -1,4 +1,7 @@
-import { checkAnswer, getRandom2DigitNumber } from '../utils/utils.js';
+import {
+  getUserAnswer, showCorrectAnswer, getRandom2DigitNumber, showGameQuestionForUser,
+} from '../utils/utils.js';
+import startGame from '../index.js';
 
 const getGcd = (a, b) => {
   if (!b) {
@@ -12,10 +15,17 @@ const gcd = () => {
   const randomFirstNumber = getRandom2DigitNumber();
   const randomSecondNumber = getRandom2DigitNumber();
 
-  console.log(`Question: ${randomFirstNumber} ${randomSecondNumber}`);
+  showGameQuestionForUser(`Question: ${randomFirstNumber} ${randomSecondNumber}`);
   const realAnswer = getGcd(randomFirstNumber, randomSecondNumber);
+  const userAnswer = getUserAnswer();
+  showCorrectAnswer(realAnswer, userAnswer);
 
-  return checkAnswer(realAnswer);
+  return realAnswer === userAnswer;
 };
 
-export default gcd;
+const startGcdGame = () => {
+  const question = 'Find the greatest common divisor of given numbers.';
+  startGame(gcd, question);
+};
+
+export default startGcdGame;

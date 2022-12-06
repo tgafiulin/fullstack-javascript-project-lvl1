@@ -1,11 +1,22 @@
-import { checkAnswer } from '../utils/utils.js';
+import { getUserAnswer, showCorrectAnswer, showGameQuestionForUser } from '../utils/utils.js';
+import startGame from '../index.js';
+
+const checkEvenNumber = (number) => number % 2 === 0;
 
 const even = () => {
   const randomNumber = Math.round(Math.random() * 100);
-  const realAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-  console.log(`Question: ${randomNumber}`);
+  showGameQuestionForUser(`${randomNumber}`);
 
-  return checkAnswer(realAnswer);
+  const realAnswer = checkEvenNumber(randomNumber) ? 'yes' : 'no';
+  const userAnswer = getUserAnswer();
+  showCorrectAnswer(realAnswer, userAnswer);
+
+  return realAnswer === userAnswer;
 };
 
-export default even;
+const startEvenGame = () => {
+  const question = 'Answer "yes" if the number is even, otherwise answer "no".';
+  startGame(even, question);
+};
+
+export default startEvenGame;

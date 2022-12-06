@@ -1,8 +1,9 @@
-import { checkAnswer, getRandom2DigitNumber } from '../utils/utils.js';
+import {
+  getUserAnswer, showCorrectAnswer, getRandom2DigitNumber, showGameQuestionForUser,
+} from '../utils/utils.js';
+import startGame from '../index.js';
 
-const prime = () => {
-  const number = getRandom2DigitNumber();
-
+const checkPrimeNumber = (number) => {
   let isPrime = true;
 
   if (number === 1) {
@@ -16,10 +17,26 @@ const prime = () => {
     }
   }
 
-  console.log(`Question: ${number}`);
-  const realAnswer = isPrime ? 'yes' : 'no';
-
-  return checkAnswer(realAnswer);
+  return isPrime;
 };
 
-export default prime;
+const prime = () => {
+  const number = getRandom2DigitNumber();
+
+  const isPrime = checkPrimeNumber(number);
+
+  showGameQuestionForUser(`${number}`);
+  const realAnswer = isPrime ? 'yes' : 'no';
+
+  const userAnswer = getUserAnswer();
+  showCorrectAnswer(realAnswer, userAnswer);
+
+  return realAnswer === userAnswer;
+};
+
+const startPrimeGame = () => {
+  const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  startGame(prime, question);
+};
+
+export default startPrimeGame;

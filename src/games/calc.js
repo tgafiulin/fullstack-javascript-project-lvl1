@@ -1,16 +1,20 @@
-import { checkAnswer, getRandom2DigitNumber } from '../utils/utils.js';
+import {
+  getUserAnswer, getRandom2DigitNumber, showGameQuestionForUser, showCorrectAnswer,
+} from '../utils/utils.js';
+import startGame from '../index.js';
 
 const calculation = (firstNumber, operation, secondNumber) => {
-  switch (operation) {
-    case '+':
-      return firstNumber + secondNumber;
-    case '-':
-      return firstNumber - secondNumber;
-    case '*':
-      return firstNumber * secondNumber;
-    default:
-      return firstNumber + secondNumber;
+  let result;
+
+  if (operation === '+') {
+    result = firstNumber + secondNumber;
+  } if (operation === '-') {
+    result = firstNumber - secondNumber;
+  } if (operation === '*') {
+    result = firstNumber * secondNumber;
   }
+
+  return result;
 };
 
 const operations = ['+', '-', '*'];
@@ -20,10 +24,18 @@ const calc = () => {
   const randomSecondNumber = getRandom2DigitNumber();
   const randomOperation = operations[Math.floor(Math.random() * operations.length)];
 
-  console.log(`Question: ${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`);
-  const realAnswer = calculation(randomFirstNumber, randomOperation, randomSecondNumber);
+  showGameQuestionForUser(`${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`);
+  const realAnswer = String(calculation(randomFirstNumber, randomOperation, randomSecondNumber));
+  const userAnswer = getUserAnswer();
 
-  return checkAnswer(realAnswer);
+  showCorrectAnswer(realAnswer, userAnswer);
+
+  return realAnswer === userAnswer;
 };
 
-export default calc;
+const startCalcGame = () => {
+  const question = 'What is the result of the expression?';
+  startGame(calc, question);
+};
+
+export default startCalcGame;
