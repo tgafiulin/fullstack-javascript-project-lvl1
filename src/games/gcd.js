@@ -16,7 +16,7 @@ const gcd = () => {
   const randomSecondNumber = getRandom2DigitNumber();
 
   showGameQuestionForUser(`Question: ${randomFirstNumber} ${randomSecondNumber}`);
-  const realAnswer = getGcd(randomFirstNumber, randomSecondNumber);
+  const realAnswer = String(getGcd(randomFirstNumber, randomSecondNumber));
   const userAnswer = getUserAnswer();
   showCorrectAnswer(realAnswer, userAnswer);
 

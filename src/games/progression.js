@@ -17,7 +17,7 @@ const generateProgression = (firstNumberProgression, stepProgression, indexAnswe
     }
   }
 
-  return { row, realAnswer };
+  return { row, realAnswer: String(realAnswer) };
 };
 
 const progression = () => {
