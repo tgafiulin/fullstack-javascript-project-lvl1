@@ -1,7 +1,7 @@
 import {
-  getUserAnswer, showCorrectAnswer, getRandom2DigitNumber, showGameQuestionForUser,
+  getRandomNumber,
 } from '../utils/utils.js';
-import startGame from '../index.js';
+import startGame, { startMainGame } from '../index.js';
 
 const checkPrimeNumber = (number) => {
   let isPrime = true;
@@ -20,23 +20,18 @@ const checkPrimeNumber = (number) => {
   return isPrime;
 };
 
-const prime = () => {
-  const number = getRandom2DigitNumber();
-
+const isPrimeNumber = () => {
+  const number = getRandomNumber(0, 99);
   const isPrime = checkPrimeNumber(number);
-
-  showGameQuestionForUser(`${number}`);
+  const question = `${number}`;
   const realAnswer = isPrime ? 'yes' : 'no';
 
-  const userAnswer = getUserAnswer();
-  showCorrectAnswer(realAnswer, userAnswer);
-
-  return realAnswer === userAnswer;
+  return startMainGame(realAnswer, question);
 };
 
-const startPrimeGame = () => {
+const startIsPrimeNumberGame = () => {
   const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  startGame(prime, question);
+  startGame(isPrimeNumber, question);
 };
 
-export default startPrimeGame;
+export default startIsPrimeNumberGame;

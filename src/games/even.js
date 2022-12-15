@@ -1,22 +1,18 @@
-import { getUserAnswer, showCorrectAnswer, showGameQuestionForUser } from '../utils/utils.js';
-import startGame from '../index.js';
+import startGame, { startMainGame } from '../index.js';
 
 const checkEvenNumber = (number) => number % 2 === 0;
 
-const even = () => {
+const parityCheck = () => {
   const randomNumber = Math.round(Math.random() * 100);
-  showGameQuestionForUser(`${randomNumber}`);
-
+  const question = `${randomNumber}`;
   const realAnswer = checkEvenNumber(randomNumber) ? 'yes' : 'no';
-  const userAnswer = getUserAnswer();
-  showCorrectAnswer(realAnswer, userAnswer);
 
-  return realAnswer === userAnswer;
+  return startMainGame(realAnswer, question);
 };
 
-const startEvenGame = () => {
+const startParityCheckGame = () => {
   const question = 'Answer "yes" if the number is even, otherwise answer "no".';
-  startGame(even, question);
+  startGame(parityCheck, question);
 };
 
-export default startEvenGame;
+export default startParityCheckGame;

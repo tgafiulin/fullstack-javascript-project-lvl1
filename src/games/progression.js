@@ -1,13 +1,15 @@
 import {
-  getUserAnswer, showCorrectAnswer, getRandom2DigitNumber, showGameQuestionForUser,
+  getRandomNumber,
 } from '../utils/utils.js';
-import startGame from '../index.js';
+import startGame, { startMainGame } from '../index.js';
 
-const generateProgression = ({ firstNumberProgression, stepProgression, indexAnswer }) => {
+const generateProgression = ({
+  firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
+}) => {
   const row = [];
   let realAnswer;
 
-  for (let i = 0; i < 10; i += 1) {
+  for (let i = 0; i < lengthProgression; i += 1) {
     const number = firstNumberProgression + i * stepProgression;
     if (i === indexAnswer) {
       realAnswer = number;
@@ -20,25 +22,26 @@ const generateProgression = ({ firstNumberProgression, stepProgression, indexAns
   return { row, realAnswer: String(realAnswer) };
 };
 
-const progression = () => {
-  const firstNumberProgression = getRandom2DigitNumber();
-  const stepProgression = Math.ceil(Math.random() * 4);
-  const indexAnswer = Math.floor(Math.random() * 10);
+const getProgressionNumber = () => {
+  const firstNumberProgression = getRandomNumber(0, 99);
+  const stepProgression = getRandomNumber(1, 3);
+  const lengthProgression = getRandomNumber(5, 10);
+  const indexAnswer = getRandomNumber(0, 9);
 
-  const paramsForProgression = { firstNumberProgression, stepProgression, indexAnswer };
+  const paramsForProgression = {
+    firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
+  };
 
   const { row, realAnswer } = generateProgression(paramsForProgression);
 
-  showGameQuestionForUser(`${row.join(' ')}`);
-  const userAnswer = getUserAnswer();
-  showCorrectAnswer(realAnswer, userAnswer);
+  const question = `${row.join(' ')}`;
 
-  return realAnswer === userAnswer;
+  return startMainGame(realAnswer, question);
 };
 
-const startProgressionGame = () => {
+const startGetProgressionNumberGame = () => {
   const question = 'What number is missing in the progression?';
-  startGame(progression, question);
+  startGame(getProgressionNumber, question);
 };
 
-export default startProgressionGame;
+export default startGetProgressionNumberGame;

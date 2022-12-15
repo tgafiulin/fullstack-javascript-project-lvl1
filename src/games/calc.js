@@ -1,7 +1,7 @@
 import {
-  getUserAnswer, getRandom2DigitNumber, showGameQuestionForUser, showCorrectAnswer,
+  getRandomNumber,
 } from '../utils/utils.js';
-import startGame from '../index.js';
+import startGame, { startMainGame } from '../index.js';
 
 const calculation = (firstNumber, operation, secondNumber) => {
   let result;
@@ -19,23 +19,20 @@ const calculation = (firstNumber, operation, secondNumber) => {
 
 const operations = ['+', '-', '*'];
 
-const calc = () => {
-  const randomFirstNumber = getRandom2DigitNumber();
-  const randomSecondNumber = getRandom2DigitNumber();
+const solveExample = () => {
+  const randomFirstNumber = getRandomNumber(0, 99);
+  const randomSecondNumber = getRandomNumber(0, 99);
   const randomOperation = operations[Math.floor(Math.random() * operations.length)];
 
-  showGameQuestionForUser(`${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`);
+  const question = `${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`;
   const realAnswer = String(calculation(randomFirstNumber, randomOperation, randomSecondNumber));
-  const userAnswer = getUserAnswer();
 
-  showCorrectAnswer(realAnswer, userAnswer);
-
-  return realAnswer === userAnswer;
+  return startMainGame(realAnswer, question);
 };
 
-const startCalcGame = () => {
+const startSolveExampleGame = () => {
   const question = 'What is the result of the expression?';
-  startGame(calc, question);
+  startGame(solveExample, question);
 };
 
-export default startCalcGame;
+export default startSolveExampleGame;
