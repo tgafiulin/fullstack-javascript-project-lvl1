@@ -1,4 +1,4 @@
-export const getRandomNumber = (min, max) => min + Math.round(Math.random() * (max - min));
+export const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 export const showCorrectAnswer = (realAnswer, userAnswer) => {
   if (realAnswer === userAnswer) {
