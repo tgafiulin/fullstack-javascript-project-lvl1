@@ -9,7 +9,7 @@ const generateProgression = ({
   const row = [];
   let realAnswer;
 
-  for (let i = 0; i < lengthProgression; i += 1) {
+  for (let i = 0; i <= lengthProgression; i += 1) {
     const number = firstNumberProgression + i * stepProgression;
     if (i === indexAnswer) {
       realAnswer = number;
@@ -26,7 +26,7 @@ const getProgressionNumber = () => {
   const firstNumberProgression = getRandomNumber(0, 99);
   const stepProgression = getRandomNumber(1, 3);
   const lengthProgression = getRandomNumber(5, 10);
-  const indexAnswer = getRandomNumber(0, 9);
+  const indexAnswer = getRandomNumber(0, lengthProgression);
 
   const paramsForProgression = {
     firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
