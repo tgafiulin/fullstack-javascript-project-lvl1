@@ -22,7 +22,7 @@ const operations = ['+', '-', '*'];
 const getRoundData = () => {
   const randomFirstNumber = getRandomNumber(0, 99);
   const randomSecondNumber = getRandomNumber(0, 99);
-  const randomOperation = getRandomNumber(0, operations.length);
+  const randomOperation = operations[getRandomNumber(0, operations.length)];
 
   const question = `${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`;
   const rightAnswer = String(calculation(randomFirstNumber, randomOperation, randomSecondNumber));
