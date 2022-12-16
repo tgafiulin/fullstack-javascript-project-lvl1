@@ -19,7 +19,7 @@ const generateProgression = ({
     }
   }
 
-  return { row, realAnswer: String(realAnswer) };
+  return { row, rightAnswer: String(realAnswer) };
 };
 
 const getProgressionNumber = () => {
