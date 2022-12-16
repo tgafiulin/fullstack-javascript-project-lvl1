@@ -13,11 +13,14 @@ const startGame = (getRoundData, gameQuestion) => {
 
   while (i < gameSteps) {
     const { rightAnswer, question: taskQuestion } = getRoundData();
-    showGameQuestionForUser(taskQuestion);
+    console.log(`Question: ${taskQuestion}`);
     const userAnswer = readlineSync.question('Your answer: ');
     showCorrectAnswer(rightAnswer, userAnswer);
 
-    if (userAnswer !== rightAnswer) {
+    if (rightAnswer === userAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${name}!`);
       return;
     }

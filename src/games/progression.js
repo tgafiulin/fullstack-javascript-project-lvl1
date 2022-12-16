@@ -1,6 +1,4 @@
-import {
-  getRandomNumber,
-} from '../utils/utils.js';
+import getRandomNumber from '../utils/utils.js';
 import startGame from '../index.js';
 
 const generateProgression = ({
