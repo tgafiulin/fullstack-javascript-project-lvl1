@@ -1,7 +1,7 @@
 import {
   getRandomNumber,
 } from '../utils/utils.js';
-import startGame, { startMainGame } from '../index.js';
+import startGame from '../index.js';
 
 const checkPrimeNumber = (number) => {
   let isPrime = true;
@@ -24,9 +24,9 @@ const isPrimeNumber = () => {
   const number = getRandomNumber(0, 99);
   const isPrime = checkPrimeNumber(number);
   const question = `${number}`;
-  const realAnswer = isPrime ? 'yes' : 'no';
+  const rightAnswer = isPrime ? 'yes' : 'no';
 
-  return startMainGame(realAnswer, question);
+  return { rightAnswer, question };
 };
 
 const startIsPrimeNumberGame = () => {

@@ -1,7 +1,7 @@
 import {
   getRandomNumber,
 } from '../utils/utils.js';
-import startGame, { startMainGame } from '../index.js';
+import startGame from '../index.js';
 
 const generateProgression = ({
   firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
@@ -32,11 +32,11 @@ const getProgressionNumber = () => {
     firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
   };
 
-  const { row, realAnswer } = generateProgression(paramsForProgression);
+  const { row, rightAnswer } = generateProgression(paramsForProgression);
 
   const question = `${row.join(' ')}`;
 
-  return startMainGame(realAnswer, question);
+  return { rightAnswer, question };
 };
 
 const startGetProgressionNumberGame = () => {

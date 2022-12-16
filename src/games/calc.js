@@ -1,7 +1,7 @@
 import {
   getRandomNumber,
 } from '../utils/utils.js';
-import startGame, { startMainGame } from '../index.js';
+import startGame from '../index.js';
 
 const calculation = (firstNumber, operation, secondNumber) => {
   let result;
@@ -25,9 +25,8 @@ const solveExample = () => {
   const randomOperation = operations[Math.floor(Math.random() * operations.length)];
 
   const question = `${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`;
-  const realAnswer = String(calculation(randomFirstNumber, randomOperation, randomSecondNumber));
-
-  return startMainGame(realAnswer, question);
+  const rightAnswer = String(calculation(randomFirstNumber, randomOperation, randomSecondNumber));
+  return { rightAnswer, question };
 };
 
 const startSolveExampleGame = () => {

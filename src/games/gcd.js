@@ -1,7 +1,7 @@
 import {
   getRandomNumber,
 } from '../utils/utils.js';
-import startGame, { startMainGame } from '../index.js';
+import startGame from '../index.js';
 
 const getGcd = (a, b) => {
   if (!b) {
@@ -15,9 +15,9 @@ const findGcd = () => {
   const randomFirstNumber = getRandomNumber(0, 99);
   const randomSecondNumber = getRandomNumber(0, 99);
   const question = `Question: ${randomFirstNumber} ${randomSecondNumber}`;
-  const realAnswer = String(getGcd(randomFirstNumber, randomSecondNumber));
+  const rightAnswer = String(getGcd(randomFirstNumber, randomSecondNumber));
 
-  return startMainGame(realAnswer, question);
+  return { rightAnswer, question };
 };
 
 const startFindGcdGame = () => {
