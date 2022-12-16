@@ -4,22 +4,16 @@ import {
 import startGame from '../index.js';
 
 const generateProgression = ({
-  firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
+  firstNumberProgression, stepProgression, lengthProgression,
 }) => {
   const row = [];
-  let realAnswer;
 
   for (let i = 0; i <= lengthProgression; i += 1) {
     const number = firstNumberProgression + i * stepProgression;
-    if (i === indexAnswer) {
-      realAnswer = number;
-      row.push('..');
-    } else {
-      row.push(number);
-    }
+    row.push(number);
   }
 
-  return { row, rightAnswer: String(realAnswer) };
+  return row;
 };
 
 const getRoundData = () => {
@@ -29,10 +23,13 @@ const getRoundData = () => {
   const indexAnswer = getRandomNumber(0, lengthProgression);
 
   const paramsForProgression = {
-    firstNumberProgression, stepProgression, lengthProgression, indexAnswer,
+    firstNumberProgression, stepProgression, lengthProgression,
   };
 
-  const { row, rightAnswer } = generateProgression(paramsForProgression);
+  const row = generateProgression(paramsForProgression);
+
+  const rightAnswer = String(row[indexAnswer]);
+  row[indexAnswer] = '..';
 
   const question = `${row.join(' ')}`;
 
