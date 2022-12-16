@@ -1,8 +1,5 @@
 import readlineSync from 'readline-sync';
 import greeting from './cli.js';
-import {
-  showGameQuestionForUser, showCorrectAnswer,
-} from './utils/utils.js';
 
 const startGame = (getRoundData, gameQuestion) => {
   const name = greeting();
