@@ -12,7 +12,6 @@ const startGame = (getRoundData, gameQuestion) => {
     const { rightAnswer, question: taskQuestion } = getRoundData();
     console.log(`Question: ${taskQuestion}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    showCorrectAnswer(rightAnswer, userAnswer);
 
     if (rightAnswer === userAnswer) {
       console.log('Correct!');
