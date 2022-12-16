@@ -19,10 +19,10 @@ const calculation = (firstNumber, operation, secondNumber) => {
 
 const operations = ['+', '-', '*'];
 
-const solveExample = () => {
+const getRoundData = () => {
   const randomFirstNumber = getRandomNumber(0, 99);
   const randomSecondNumber = getRandomNumber(0, 99);
-  const randomOperation = operations[Math.floor(Math.random() * operations.length)];
+  const randomOperation = getRandomNumber(0, operations.length);
 
   const question = `${randomFirstNumber} ${randomOperation} ${randomSecondNumber}`;
   const rightAnswer = String(calculation(randomFirstNumber, randomOperation, randomSecondNumber));
@@ -31,7 +31,7 @@ const solveExample = () => {
 
 const startSolveExampleGame = () => {
   const question = 'What is the result of the expression?';
-  startGame(solveExample, question);
+  startGame(getRoundData, question);
 };
 
 export default startSolveExampleGame;

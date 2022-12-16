@@ -11,7 +11,7 @@ const getGcd = (a, b) => {
   return getGcd(b, a % b);
 };
 
-const findGcd = () => {
+const getRoundData = () => {
   const randomFirstNumber = getRandomNumber(0, 99);
   const randomSecondNumber = getRandomNumber(0, 99);
   const question = `Question: ${randomFirstNumber} ${randomSecondNumber}`;
@@ -22,7 +22,7 @@ const findGcd = () => {
 
 const startFindGcdGame = () => {
   const question = 'Find the greatest common divisor of given numbers.';
-  startGame(findGcd, question);
+  startGame(getRoundData, question);
 };
 
 export default startFindGcdGame;

@@ -20,7 +20,7 @@ const checkPrimeNumber = (number) => {
   return isPrime;
 };
 
-const isPrimeNumber = () => {
+const getRoundData = () => {
   const number = getRandomNumber(0, 99);
   const isPrime = checkPrimeNumber(number);
   const question = `${number}`;
@@ -31,7 +31,7 @@ const isPrimeNumber = () => {
 
 const startIsPrimeNumberGame = () => {
   const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  startGame(isPrimeNumber, question);
+  startGame(getRoundData, question);
 };
 
 export default startIsPrimeNumberGame;

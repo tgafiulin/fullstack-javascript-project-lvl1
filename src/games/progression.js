@@ -22,7 +22,7 @@ const generateProgression = ({
   return { row, rightAnswer: String(realAnswer) };
 };
 
-const getProgressionNumber = () => {
+const getRoundData = () => {
   const firstNumberProgression = getRandomNumber(0, 99);
   const stepProgression = getRandomNumber(1, 3);
   const lengthProgression = getRandomNumber(5, 10);
@@ -41,7 +41,7 @@ const getProgressionNumber = () => {
 
 const startGetProgressionNumberGame = () => {
   const question = 'What number is missing in the progression?';
-  startGame(getProgressionNumber, question);
+  startGame(getRoundData, question);
 };
 
 export default startGetProgressionNumberGame;
