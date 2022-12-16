@@ -4,7 +4,7 @@ import {
   showGameQuestionForUser, showCorrectAnswer,
 } from './utils/utils.js';
 
-const startGame = (gameResult, gameQuestion) => {
+const startGame = (getRoundData, gameQuestion) => {
   const name = greeting();
   console.log(gameQuestion);
 
@@ -12,7 +12,7 @@ const startGame = (gameResult, gameQuestion) => {
   let i = 0;
 
   while (i < gameSteps) {
-    const { rightAnswer, question: taskQuestion } = gameResult();
+    const { rightAnswer, question: taskQuestion } = getRoundData();
     showGameQuestionForUser(taskQuestion);
     const userAnswer = readlineSync.question('Your answer: ');
     showCorrectAnswer(rightAnswer, userAnswer);
