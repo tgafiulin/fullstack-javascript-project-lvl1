@@ -4,6 +4,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/38ba6b4b8ab655745c38/test_coverage)](https://codeclimate.com/github/tgafiulin/fullstack-javascript-project-lvl1/test_coverage)
+
 ## Brain-even
 
 [![asciicast](https://asciinema.org/a/KvLlpKpu4C0sJ4bBFPN4GyupN.svg)](https://asciinema.org/a/KvLlpKpu4C0sJ4bBFPN4GyupN)
